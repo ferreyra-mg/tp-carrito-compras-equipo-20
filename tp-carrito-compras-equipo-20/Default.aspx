@@ -7,12 +7,22 @@
 
         <%
             foreach (var art in articulos)
-            { %>
+            { 
+            
+            string imagen;
+                if (art.Imagenes.Count > 0)
+                {
+                    imagen = art.Imagenes[0].Url;
+                }
+
+                else imagen = "";
+            
+            %>
                 <div class="col">
                     <div class="card mb-1">
                         <div class="row g-0">
                             <div class="col-4 col-md-4">
-                                <img src="https://picsum.photos/200?grayscale&random=<%: art.Codigo %>" class="img-thumbnail img-fluid rounded-start" alt="...">
+                                <img src="<%: imagen %>" class="img-thumbnail img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-8 col-md-8">
                                 <div class="card-body d-flex flex-column justify-content-between h-100 pb-1 pb-md-2">
