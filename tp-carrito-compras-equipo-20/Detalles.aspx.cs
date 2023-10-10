@@ -1,6 +1,7 @@
 ﻿using dominio;
 using Negocio;
 using System;
+using System.Web;
 using System.Web.UI;
 
 namespace tp_carrito_compras_equipo_20
@@ -19,6 +20,8 @@ namespace tp_carrito_compras_equipo_20
 
             articulo = Articulos.Listar().Find((ar) => ar.Codigo == codigo);
 
+            if (articulo == null) HttpNotFound();
+
             if (articulo.Imagenes.Count == 0)
             {
                 articulo.Imagenes.Add(new Imagen{
@@ -28,6 +31,14 @@ namespace tp_carrito_compras_equipo_20
 
             Title = "TP Carrito de Compras - Detalles Articulo " + articulo.Codigo;
             Titulo = "Detalles del Articulo " + articulo.Codigo;
+        }
+
+        private void HttpNotFound() 
+        {
+            Response.Clear();
+            Response.StatusCode = 404;
+            Response.End();
+            HttpContext.Current.ApplicationInstance.CompleteRequest();
         }
     }
 }
