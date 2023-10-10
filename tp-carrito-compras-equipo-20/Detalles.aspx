@@ -8,13 +8,13 @@
             <div class="card">
                 <div class="row">
                     <div class="col-4">
-                        <img src="https://picsum.photos/300?grayscale" class="card-img-top" height="300" alt="">
+                        <img src="<%: articulo.Imagenes[0].Url %>" class="card-img-top img-thumbnail " height="300" onerror="this.src='<%: URL_NO_IMAGEN %>'" >
                     </div>
                     <div class="col-8">
                         <div class="card-body d-flex flex-column justify-content-between h-100">
                             <div>
                                 <h5 class="card-title"><%: Titulo %></h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><%: articulo.Descripcion %></p>
                             </div>
                             <div class=" d-flex justify-content-end gap-1 pb-1">
                                 <a class="btn btn-success btn-sm text-white">Agregar al carrito</a>
