@@ -37,6 +37,32 @@ namespace Negocio
             return articulos;
         }
 
+        public static Articulo Ver(string id)
+        {
+            AccesoDatos acceso = new AccesoDatos();
+            Articulo aux = new Articulo();
+
+            var lector = acceso.Leer("SELECT a.Id, Codigo, a.Nombre, a.Precio, a.Descripcion, a.IdMarca, a.IdCategoria, a.Precio, b.Descripcion AS Categoria, c.Descripcion AS Marca FROM Articulos AS a INNER JOIN Categorias AS b ON a.IdCategoria = b.Id INNER JOIN Marcas AS c ON a.IdMarca = c.Id WHERE a.Id = '" + id + "'");
+            
+            while (lector.Read())
+            {
+
+                aux.Id = (int)lector["Id"];
+                aux.Codigo = (string)lector["Codigo"];
+                aux.Nombre = (string)lector["Nombre"];
+                aux.Precio = (decimal)lector["Precio"];
+                aux.Descripcion = (string)lector["Descripcion"];
+                aux.IdCategoria = lector["IdCategoria"] != DBNull.Value ? (int)lector["IdCategoria"] : -1;
+                aux.Categoria = lector["Categoria"] != DBNull.Value ? (string)lector["Categoria"] : "";
+                aux.Marca = lector["Marca"] != DBNull.Value ? (string)lector["Marca"] : "";
+                aux.IdMarca = lector["IdMarca"] != DBNull.Value ? (int)lector["IdMarca"] : -1;
+                aux.Imagenes = Imagenes.ByArticuloId((int)lector["Id"]);
+
+            }
+
+            return aux;
+        }
+
         public static bool Existe(string codigo)
         {
             AccesoDatos acceso = new AccesoDatos();

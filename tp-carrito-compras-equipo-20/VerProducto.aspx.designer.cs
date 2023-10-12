@@ -15,12 +15,12 @@ namespace tp_carrito_compras_equipo_20
     {
 
         /// <summary>
-        /// infoProducto control.
+        /// lblProducto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink infoProducto;
+        protected global::System.Web.UI.WebControls.Label lblProducto;
     }
 }
