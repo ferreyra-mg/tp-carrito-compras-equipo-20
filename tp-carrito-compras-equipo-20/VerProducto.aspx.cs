@@ -17,20 +17,12 @@ namespace tp_carrito_compras_equipo_20
                 string idProducto = Request.QueryString["id"];
                 articulo = Articulos.Ver(idProducto);
 
-                if (articulo.Id == 0) HttpNotFound();
+                if (articulo.Id == 0) Response.Redirect("/404.aspx");
 
                 lblProducto.Text = articulo.Nombre;
 
             }
 
-        }
-
-        private void HttpNotFound()
-        {
-            Response.Clear();
-            Response.StatusCode = 404;
-            Response.End();
-            HttpContext.Current.ApplicationInstance.CompleteRequest();
         }
     }
 }
