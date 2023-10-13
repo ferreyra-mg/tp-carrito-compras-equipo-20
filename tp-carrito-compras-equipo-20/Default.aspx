@@ -24,7 +24,7 @@
                     <div class="card h-100 border border-0" onclick="VerProducto">
 
                         <div class="hovereffect">
-                        <img src="<%: imagen %>" class="mx-auto hovereffect" alt="...">
+                        <img src="<%: imagen %>" class="mx-auto hovereffect" alt="..." onerror="this.onload = null; this.src='imagenes/imagen.png'">
                         <div class="overlay">
                 <p class="icon-links">
                     <a href="#">
