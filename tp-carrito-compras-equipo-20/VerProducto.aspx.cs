@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using dominio;
 using Negocio;
 
@@ -18,9 +16,21 @@ namespace tp_carrito_compras_equipo_20
             {
                 string idProducto = Request.QueryString["id"];
                 articulo = Articulos.Ver(idProducto);
+
+                if (articulo.Id == 0) HttpNotFound();
+
                 lblProducto.Text = articulo.Nombre;
+
             }
 
+        }
+
+        private void HttpNotFound()
+        {
+            Response.Clear();
+            Response.StatusCode = 404;
+            Response.End();
+            HttpContext.Current.ApplicationInstance.CompleteRequest();
         }
     }
 }
