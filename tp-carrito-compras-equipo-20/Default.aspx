@@ -27,7 +27,8 @@
                         <img src="<%: imagen %>" class="mx-auto hovereffect" alt="..." onerror="this.onload = null; this.src='imagenes/imagen.png'">
                         <div class="overlay">
                 <p class="icon-links">
-                    <a href="#">
+                    <a href="Productos.aspx?id=<%: art.Id %>">
+                        <%--<asp:Button ID="Button1" runat="server" Text="Agregar al carrito" OnClick="Button1_Click" />--%>
                         Agregar al carrito
                     </a>
                 </p>

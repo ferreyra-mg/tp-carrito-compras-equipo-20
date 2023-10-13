@@ -21,13 +21,19 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Lista de Productos</h1>
+    <h1>Carrito de Compras</h1>
 
         <%
             foreach (var art in articulos)
             { 
                 string imagen= "";
-                if( art.Imagenes.Count > 0){
+                if(art.Imagenes == null)
+                {
+                     imagen = @"imagenes\imagen.png";
+                    return;
+                }                  
+               
+                if( art.Imagenes.Count > 0 ){
                     imagen = art.Imagenes[0].Url;
                 }
                 else imagen = @"imagenes\imagen.png";

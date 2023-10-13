@@ -18,18 +18,38 @@ namespace tp_carrito_compras_equipo_20
         public CultureInfo pesos = new CultureInfo("es-AR");
         protected void Page_Load(object sender, EventArgs e)
         {
-            articulos = Articulos.Listar();
-            if(Session["ID"] == null)
+            var id = Request.QueryString["id"];
+
+            articulos = (List<Articulo>)Session["articulos"];
+            if (articulos == null)
             {
-                ClientScript.RegisterStartupScript(GetType(), "alert", "alert('¿Desea continuar?');", true);
-   
-                //Response.Redirect("Default.aspx");
+                articulos = new List<Articulo>();
+                if (id != null)
+                {
+                    Articulo art = Articulos.Ver(id);
+                    articulos.Add(art);
+                }
             }
+
+            List<Articulo> articulosTotal = Articulos.Listar();
+
+            if(id != null)
+            {
+                foreach (var art in articulosTotal)
+                {
+                    if (id == art.Id.ToString())
+                    {
+                        articulos.Add(art);
+                    }
+                }
+            }
+
+            Session["articulos"] = articulos;
             
             decimal total = 0;
-            foreach (var art in articulos)
+            foreach (var arti in articulos)
             {
-                total += art.Precio;
+                total += arti.Precio;
             }
 
             lblTotalPagar.Text = string.Format(pesos, "{0:C}", total);
