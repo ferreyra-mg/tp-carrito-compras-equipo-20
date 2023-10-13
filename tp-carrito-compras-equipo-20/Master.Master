@@ -50,11 +50,11 @@
         
                     <form class="d-flex" role="search">
                         <input id="inputBuscar" type="text" class="border-0" aria-label="Buscar" placeholder="Buscar"/>
-                        <asp:ImageButton ID="btnBuscar" runat="server" ImageUrl="imagenes/buscar.png" width="20" style="margin-left:10px;"/>
+                        <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="imagenes/buscar.png" width="20" style="margin-left:10px;"/>
                     </form>
 
 
-                <asp:ImageButton ID="btnCarrito" runat="server" ImageUrl="imagenes/carrito.png" width="20" style="margin-left:10px;"/>
+                <asp:ImageButton ID="btnCarrito" runat="server" ImageUrl="imagenes/carrito.png" width="20" style="margin-left:10px;" OnClick="ImageButton1_Click" />
       </span>
     </div>
 

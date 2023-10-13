@@ -17,6 +17,7 @@
                                 <p class="card-text"><%: articulo.Descripcion %></p>
                             </div>
                             <div class=" d-flex justify-content-end gap-1 pb-1">
+                                <%--<asp:Button class="btn btn-success btn-sm text-white" ID="Button1" runat="server" Text="Agregar al carrito" />--%>
                                 <a class="btn btn-success btn-sm text-white">Agregar al carrito</a>
                                 <a href="Default.aspx" class="btn btn-primary btn-sm text-white">Volver</a>
                             </div>
