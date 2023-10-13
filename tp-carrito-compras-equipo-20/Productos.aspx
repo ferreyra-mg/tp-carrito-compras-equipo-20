@@ -26,8 +26,14 @@
         <%
             foreach (var art in articulos)
             { 
+                string imagen= "";
+                if( art.Imagenes.Count > 0){
+                    imagen = art.Imagenes[0].Url;
+                }
+                else imagen = @"imagenes\imagen.png";
             
             %>
+
     
 
         <section style="background-color: #eee;">
@@ -39,7 +45,7 @@
                     <div class="row">
                         <div class="col-md-9 col-lg-3 col-xl-3 mb-4 mb-lg-0">
                         <div class="bg-image hover-zoom ripple rounded ripple-surface">
-                            <img src="https://picsum.photos/200?grayscale&random=<%: art.Codigo %>" class="w-80" />
+                            <img src="<%: imagen %>" class="mx-auto hovereffect" alt="..." onerror="this.onload = null; this.src='imagenes/imagen.png'">
                             <a href="#!">
                             <div class="hover-overlay">
                                 <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
@@ -62,7 +68,7 @@
                         </div>
                         <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
                         <div class="d-flex flex-row align-items-center mb-1">
-                            <h4 class="mb-1 me-1">$ <%: art.Precio %></h4>
+                            <h4 class="mb-1 me-1"><%: string.Format(pesos, "{0:C}", art.Precio) %></h4>
                         </div>
 
                         <div class="d-flex flex-column mt-4">
@@ -83,7 +89,7 @@
             <%}%>
 
             <div class="form-outline mx-auto" style="width: 22rem;">
-                <label class="form-label" for="form2">Cantidad total a Pagar</label>
+                <h2 class="form-label" for="form2">Cantidad total a Pagar</h2>
                 
                 <asp:Label ID="lblTotalPagar" runat="server" Text="$" class="form-control" readonly="true"></asp:Label>
             </div>

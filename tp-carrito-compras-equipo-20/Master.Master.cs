@@ -11,5 +11,10 @@ namespace pokedex_web
         protected void btnSalir_Click(object sender, EventArgs e)
         {
         }
+
+        protected void ImageButton1_Click(object sender, System.Web.UI.ImageClickEventArgs e)
+        {
+            Response.Redirect("Productos.aspx");
+        }
     }
 }
