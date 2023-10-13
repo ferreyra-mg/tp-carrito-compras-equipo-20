@@ -12,7 +12,6 @@ namespace tp_carrito_compras_equipo_20
     public partial class VerProducto : System.Web.UI.Page
     {
         Articulo articulo = new Articulo();
-        Label lblProducto = new Label();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
