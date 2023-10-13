@@ -74,16 +74,18 @@
                         </div>
                         <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
                         <div class="d-flex flex-row align-items-center mb-1">
-                            <h4 class="mb-1 me-1"><%: string.Format(pesos, "{0:C}", art.Precio) %></h4>
+                            <h4 class="mb-1 me-1"><%: string.Format(pesos, "{0:C}", (art.Precio * art.Cantidad)) %></h4>
                         </div>
 
                         <div class="d-flex flex-column mt-4">
-                            <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" class="btn btn-danger btn-sm" type="button"></asp:Button>
+                            <%--<button type="button" href="Default.aspx?id=<%: art.Id %>&delete=true" class="btn btn-danger btn-sm">Eliminar</button>--%>
+                            <asp:Button class="btn btn-danger btn-sm" ID="btnClick" runat="server" Text="Eliminar" OnClick="btnEliminar_Click"></asp:Button>
                             <div class="form-outline">
-                                <asp:TextBox ID="TextBox1" runat="server" type="number" min="0" value="1" class="form-control" style="text-align: center;" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+                                <input class="form-control" style="text-align: center;" min="1" value="<%: art.Cantidad %>" disabled>
                             </div>
-                            <asp:Label ID="lblTotal" runat="server" Text="0" Visible="false" OnLoad="lblSuma_Load"/>
-                        </div>
+                            <asp:Label ID="lblTotal" runat="server" Text="0" Visible="false"/>
+                            
+                            </div>
                         </div>
                     </div>
                     </div>
@@ -96,7 +98,6 @@
 
             <div class="form-outline mx-auto" style="width: 22rem;">
                 <h2 class="form-label" for="form2">Cantidad total a Pagar</h2>
-                
                 <asp:Label ID="lblTotalPagar" runat="server" Text="$" class="form-control" readonly="true"></asp:Label>
             </div>
 </asp:Content>

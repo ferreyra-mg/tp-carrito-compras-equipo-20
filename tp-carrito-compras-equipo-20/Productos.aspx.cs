@@ -27,6 +27,7 @@ namespace tp_carrito_compras_equipo_20
                 if (id != null)
                 {
                     Articulo art = Articulos.Ver(id);
+                    art.Cantidad = art.Cantidad +1;
                     articulos.Add(art);
                 }
             }
@@ -35,11 +36,28 @@ namespace tp_carrito_compras_equipo_20
 
             if(id != null)
             {
+                bool exist = false;
                 foreach (var art in articulosTotal)
                 {
                     if (id == art.Id.ToString())
                     {
-                        articulos.Add(art);
+                        foreach (var articu in articulos)
+                        {
+                            if (art.Id == articu.Id)
+                            {
+                                articu.Cantidad = articu.Cantidad + 1;
+                                exist = true;
+                            }
+                        }
+
+                        if (exist == true)
+                        {
+                            ClientScript.RegisterStartupScript(GetType(), "alert", "alert('Ya existe este producto en el carrito. Se agrego 1 mas');", true);
+                        } else
+                        {
+                            art.Cantidad = art.Cantidad + 1;
+                            articulos.Add(art);
+                        }
                     }
                 }
             }
@@ -49,40 +67,15 @@ namespace tp_carrito_compras_equipo_20
             decimal total = 0;
             foreach (var arti in articulos)
             {
-                total += arti.Precio;
+                total += (arti.Precio * arti.Cantidad);
             }
 
             lblTotalPagar.Text = string.Format(pesos, "{0:C}", total);
         }
 
-        protected void lblSuma_Load(object sender, EventArgs e)
+        protected void btnEliminar_Click(object sender, EventArgs e)
         {
-        }
-
-        protected void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-            foreach (var art in articulos)
-            {
-                //Actualiza el valor de la etiqueta
-                lblTotal.Text = ObtenerMultiplicacion(art).ToString();
-
-                //Haz visible la etiqueta
-                lblTotal.Visible = true;
-            }
-        }
-
-        private decimal ObtenerMultiplicacion(Articulo art)
-        {   
-            decimal suma = 0;
-
-            // Obtén el valor de los input
-            decimal valor1 = art.Id;
-            decimal valor2 = art.Precio;
-
-            // Suma los valores
-            suma = valor1 * valor2;
-            return suma;
-            
+            Response.Redirect("Default.aspx");
         }
     }
 }
