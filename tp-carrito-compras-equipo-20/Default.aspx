@@ -9,15 +9,22 @@
     <div class="row row-cols-1 row-cols-md-3 g-4 w-75">
         <%
             foreach (var art in articulos)
-            { 
-            
+            {
+                infoProducto.Text = art.Nombre;
+                infoProducto.NavigateUrl = "VerProducto.aspx?id=" + art.Id;
+
+                string imagen= "";
+                if( art.Imagenes.Count > 0){
+                    imagen = art.Imagenes[0].Url;
+                }
+                else imagen = @"imagenes\imagen.png";
             %>
                 
                 <div class="col">
-                    <div class="card h-100 border border-0">
+                    <div class="card h-100 border border-0" onclick="VerProducto">
 
                         <div class="hovereffect">
-                        <img src="https://picsum.photos/200?grayscale&random=<%: art.Codigo %>" class="mx-auto" alt="...">
+                        <img src="<%: imagen %>" class="mx-auto hovereffect" alt="..." onerror="this.onload = null; this.src='imagenes/imagen.png'">
                         <div class="overlay">
                 <p class="icon-links">
                     <a href="#">
@@ -28,9 +35,10 @@
                         </div>
       
                     <div class="card-body">
-                        <a href="#" class="btn btn-light rounded-circle btn-agregar">+</a>
-                        <h5 class="card-title nombre-producto"><%: art.Nombre %></h5>
+                        <h5 class="card-title nombre-producto" >
+                            <asp:HyperLink ID="infoProducto" runat="server" OnClick="verInfoProducto"></asp:HyperLink></h5>
                         <p class="card-text info-producto"><%: art.Descripcion %></p>
+                        <p class="card-text info-producto"><%: string.Format(pesos, "{0:C}", art.Precio) %></p>
         
                     </div>
                     

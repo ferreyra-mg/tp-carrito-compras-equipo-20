@@ -24,6 +24,10 @@ body {
     font-family: monospace
 }
 
+.btn-img {
+    margin-left: 20px;
+}
+
 .info-producto, nombre-producto {
     color: #1d1d1b;
     font-family: 'Sailec','Helvetica Neue',Helvetica,Arial,sans-serif;
@@ -74,6 +78,10 @@ body {
         position: relative;
         -webkit-transition: -webkit-transform 0.35s;
         transition: transform 0.35s;
+        object-fit: cover;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
     }
 
     .hovereffect a {
