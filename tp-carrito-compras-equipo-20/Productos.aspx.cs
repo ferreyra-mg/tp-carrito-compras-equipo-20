@@ -60,14 +60,11 @@ namespace tp_carrito_compras_equipo_20
                             }
                         }
 
-                        if (exist == true)
-                        {
-                            ClientScript.RegisterStartupScript(GetType(), "alert", "alert('Ya existe este producto en el carrito. Se agrego 1 mas');", true);
-                        } else
+                        if (exist != true)
                         {
                             art.Cantidad = art.Cantidad + 1;
                             articulos.Add(art);
-                        }
+                        } 
                     }
                 }
             }
@@ -86,8 +83,21 @@ namespace tp_carrito_compras_equipo_20
         private void eliminarProducto(string id)
         {
             List<Articulo> articulosActuales = (List<Articulo>)Session["articulos"];
-
-            articulosActuales.RemoveAll(articulo => articulo.Id.ToString() == id);
+            bool flag = false;
+            foreach (var art in articulosActuales)
+            {
+                if(art.Id.ToString() == id)
+                {
+                    if(art.Cantidad > 1)
+                    {
+                        art.Cantidad = art.Cantidad - 1;
+                    } else
+                    {
+                        flag = true;
+                    }
+                } 
+            }
+            if(flag == true) articulosActuales.RemoveAll(articulo => articulo.Id.ToString() == id);
 
             Session["articulos"] = articulosActuales;
         }
