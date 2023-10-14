@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="pokedex_web.Master" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="tp_carrito_compras_equipo_20.Master"%>
 
 <!DOCTYPE html>
 
@@ -16,47 +16,47 @@
 
     <form id="form1" runat="server" class="mb-4">
 
-        
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation" style="float:left">
-      <span class="navbar-toggler-icon"><img src="imagenes/menu1.png" width="50" style="padding:20px 15px"/></span>
-    </button>
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasLightNavbarLabel">Menu</h5>
-        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-            </ul>
-          
-      </div>
-    </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation" style="float: left">
+            <span class="navbar-toggler-icon">
+                <img src="imagenes/menu1.png" width="50" style="padding: 20px 15px" /></span>
+        </button>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasLightNavbarLabel">Menu</h5>
+                <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
 
 
         <nav class="navbar navbar-expand-lg" style="background-color: none">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">Carrito de Compras</a>
                 <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        
-      </ul>
-      <span class="navbar-text" style="float:right">
-        
-                    <form class="d-flex" role="search">
-                        <input id="inputBuscar" type="text" class="border-0" aria-label="Buscar" placeholder="Buscar"/>
-                        <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="imagenes/buscar.png" width="20" style="margin-left:10px;"/>
-                    </form>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    </ul>
+                    <span class="navbar-text" style="float: right">
+
+                        <form class="d-flex" role="search">
+                            <input id="inputBuscar" type="text" class="border-0" aria-label="Buscar" placeholder="Buscar" />
+                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="imagenes/buscar.png" Width="20" Style="margin-left: 10px;" />
+                        </form>
 
 
-                <asp:ImageButton ID="btnCarrito" runat="server" ImageUrl="imagenes/carrito.png" width="20" style="margin-left:10px;" OnClick="ImageButton1_Click" />
-      </span>
-    </div>
+                        <asp:ImageButton ID="btnCarrito" runat="server" ImageUrl="imagenes/carrito.png" Width="20" Style="margin-left: 10px;" OnClick="ImageButton1_Click" />
+                    </span>
+                </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

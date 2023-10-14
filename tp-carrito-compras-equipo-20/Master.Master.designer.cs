@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace pokedex_web
+namespace tp_carrito_compras_equipo_20
 {
 
 

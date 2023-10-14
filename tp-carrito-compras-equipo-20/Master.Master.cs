@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace pokedex_web
+namespace tp_carrito_compras_equipo_20
 {
     public partial class Master : System.Web.UI.MasterPage
     {
