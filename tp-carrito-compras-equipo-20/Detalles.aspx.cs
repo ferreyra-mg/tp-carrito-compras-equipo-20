@@ -16,9 +16,9 @@ namespace tp_carrito_compras_equipo_20
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var codigo = Request.QueryString["codigo"];
+            int codigo = Convert.ToInt32(Request.QueryString["id"]);
 
-            articulo = Articulos.Listar().Find((ar) => ar.Codigo == codigo);
+            articulo = Articulos.Listar().Find((ar) => ar.Id == codigo);
 
             if (articulo == null) HttpNotFound();
 

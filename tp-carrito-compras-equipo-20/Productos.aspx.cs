@@ -16,9 +16,18 @@ namespace tp_carrito_compras_equipo_20
         //si no estan en null, mostrar los elementos dentro del carrito con las cantidad, precio y total a pagar. 
         public List<Articulo> articulos { get; set; }
         public CultureInfo pesos = new CultureInfo("es-AR");
+        public int cantidadArticulos = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             var id = Request.QueryString["id"];
+            var delete = Request.QueryString["delete"];
+
+            if(delete == "true")
+            {
+                eliminarProducto(id);
+                Response.Redirect("Productos.aspx");
+                return;
+            }
 
             articulos = (List<Articulo>)Session["articulos"];
             if (articulos == null)
@@ -29,6 +38,8 @@ namespace tp_carrito_compras_equipo_20
                     Articulo art = Articulos.Ver(id);
                     art.Cantidad = art.Cantidad +1;
                     articulos.Add(art);
+                    Session["articulos"] = articulos;
+                    return;
                 }
             }
 
@@ -50,14 +61,11 @@ namespace tp_carrito_compras_equipo_20
                             }
                         }
 
-                        if (exist == true)
-                        {
-                            ClientScript.RegisterStartupScript(GetType(), "alert", "alert('Ya existe este producto en el carrito. Se agrego 1 mas');", true);
-                        } else
+                        if (exist != true)
                         {
                             art.Cantidad = art.Cantidad + 1;
                             articulos.Add(art);
-                        }
+                        } 
                     }
                 }
             }
@@ -68,14 +76,33 @@ namespace tp_carrito_compras_equipo_20
             foreach (var arti in articulos)
             {
                 total += (arti.Precio * arti.Cantidad);
+                cantidadArticulos += arti.Cantidad;
             }
 
             lblTotalPagar.Text = string.Format(pesos, "{0:C}", total);
+            Session["cantArticulos"] = cantidadArticulos;
         }
 
-        protected void btnEliminar_Click(object sender, EventArgs e)
+        private void eliminarProducto(string id)
         {
-            Response.Redirect("Default.aspx");
+            List<Articulo> articulosActuales = (List<Articulo>)Session["articulos"];
+            bool flag = false;
+            foreach (var art in articulosActuales)
+            {
+                if(art.Id.ToString() == id)
+                {
+                    if(art.Cantidad > 1)
+                    {
+                        art.Cantidad = art.Cantidad - 1;
+                    } else
+                    {
+                        flag = true;
+                    }
+                } 
+            }
+            if(flag == true) articulosActuales.RemoveAll(articulo => articulo.Id.ToString() == id);
+
+            Session["articulos"] = articulosActuales;
         }
     }
 }
