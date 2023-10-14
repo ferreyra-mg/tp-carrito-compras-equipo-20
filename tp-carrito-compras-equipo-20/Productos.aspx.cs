@@ -19,6 +19,14 @@ namespace tp_carrito_compras_equipo_20
         protected void Page_Load(object sender, EventArgs e)
         {
             var id = Request.QueryString["id"];
+            var delete = Request.QueryString["delete"];
+
+            if(delete == "true")
+            {
+                eliminarProducto(id);
+                Response.Redirect("Productos.aspx");
+                return;
+            }
 
             articulos = (List<Articulo>)Session["articulos"];
             if (articulos == null)
@@ -29,6 +37,8 @@ namespace tp_carrito_compras_equipo_20
                     Articulo art = Articulos.Ver(id);
                     art.Cantidad = art.Cantidad +1;
                     articulos.Add(art);
+                    Session["articulos"] = articulos;
+                    return;
                 }
             }
 
@@ -73,9 +83,13 @@ namespace tp_carrito_compras_equipo_20
             lblTotalPagar.Text = string.Format(pesos, "{0:C}", total);
         }
 
-        protected void btnEliminar_Click(object sender, EventArgs e)
+        private void eliminarProducto(string id)
         {
-            Response.Redirect("Default.aspx");
+            List<Articulo> articulosActuales = (List<Articulo>)Session["articulos"];
+
+            articulosActuales.RemoveAll(articulo => articulo.Id.ToString() == id);
+
+            Session["articulos"] = articulosActuales;
         }
     }
 }

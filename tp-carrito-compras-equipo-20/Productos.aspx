@@ -78,8 +78,8 @@
                         </div>
 
                         <div class="d-flex flex-column mt-4">
-                            <%--<button type="button" href="Default.aspx?id=<%: art.Id %>&delete=true" class="btn btn-danger btn-sm">Eliminar</button>--%>
-                            <asp:Button class="btn btn-danger btn-sm" ID="btnClick" runat="server" Text="Eliminar" OnClick="btnEliminar_Click"></asp:Button>
+                            <a type="button" href="Productos.aspx?id=<%: art.Id %>&delete=true" class="btn btn-danger btn-sm">Eliminar</a>
+                            <%--<asp:Button class="btn btn-danger btn-sm" ID="btnClick" runat="server" Text="Eliminar" OnClick="btnEliminar_Click"></asp:Button>--%>
                             <div class="form-outline">
                                 <input class="form-control" style="text-align: center;" min="1" value="<%: art.Cantidad %>" disabled>
                             </div>
