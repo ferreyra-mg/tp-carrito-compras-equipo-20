@@ -6,7 +6,7 @@
 
 
     
-    <div class="row row-cols-1 row-cols-md-3 g-4 w-75">
+    <div class="row row-cols-1 row-cols-md-3 g-4 w-100">
         <%
             foreach (var art in articulos)
             {
@@ -21,7 +21,7 @@
             %>
                 
                 <div class="col">
-                    <div class="card h-100 border border-0" onclick="VerProducto">
+                    <div class="card h-100 w-75 border border-0" onclick="VerProducto">
 
                         <div class="hovereffect">
                         <img src="<%: imagen %>" class="mx-auto hovereffect" alt="..." onerror="this.onload = null; this.src='imagenes/imagen.png'">

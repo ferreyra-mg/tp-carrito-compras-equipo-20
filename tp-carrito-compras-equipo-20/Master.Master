@@ -55,6 +55,7 @@
 
 
                         <asp:ImageButton ID="btnCarrito" runat="server" ImageUrl="imagenes/carrito.png" Width="20" Style="margin-left: 10px;" OnClick="ImageButton1_Click" />
+                        <asp:Label ID="totalCarrito" runat="server" Text="0"></asp:Label>
                     </span>
                 </div>
 

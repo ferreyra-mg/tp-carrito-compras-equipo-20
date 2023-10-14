@@ -16,6 +16,7 @@ namespace tp_carrito_compras_equipo_20
         //si no estan en null, mostrar los elementos dentro del carrito con las cantidad, precio y total a pagar. 
         public List<Articulo> articulos { get; set; }
         public CultureInfo pesos = new CultureInfo("es-AR");
+        public int cantidadArticulos = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             var id = Request.QueryString["id"];
@@ -75,9 +76,11 @@ namespace tp_carrito_compras_equipo_20
             foreach (var arti in articulos)
             {
                 total += (arti.Precio * arti.Cantidad);
+                cantidadArticulos += arti.Cantidad;
             }
 
             lblTotalPagar.Text = string.Format(pesos, "{0:C}", total);
+            Session["cantArticulos"] = cantidadArticulos;
         }
 
         private void eliminarProducto(string id)

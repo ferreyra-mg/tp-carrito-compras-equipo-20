@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Master.Master" CodeBehind="Productos.aspx.cs" Inherits="tp_carrito_compras_equipo_20.Productos" %>
-
+<%@ MasterType  virtualPath="~/Master.Master"%>
 <%--<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -22,6 +22,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1>Carrito de Compras</h1>
+
+    Hay <%: cantidadArticulos %> productos en el carrito.
 
         <%
             foreach (var art in articulos)
