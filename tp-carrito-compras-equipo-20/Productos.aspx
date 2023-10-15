@@ -80,13 +80,13 @@
                         </div>
 
                         <div class="d-flex flex-column mt-4">
-                            <a type="button" href="Productos.aspx?id=<%: art.Id %>&delete=true" class="btn btn-danger btn-sm">Eliminar</a>
+                            <a type="button" href="Productos.aspx?id=<%: art.Id %>" class="btn btn-success btn-sm">Agregar</a>
                             <%--<asp:Button class="btn btn-danger btn-sm" ID="btnClick" runat="server" Text="Eliminar" OnClick="btnEliminar_Click"></asp:Button>--%>
                             <div class="form-outline">
                                 <input class="form-control" style="text-align: center;" min="1" value="<%: art.Cantidad %>" disabled>
                             </div>
                             <asp:Label ID="lblTotal" runat="server" Text="0" Visible="false"/>
-                            
+                            <a type="button" href="Productos.aspx?id=<%: art.Id %>&delete=true" class="btn btn-danger btn-sm">Eliminar</a>
                             </div>
                         </div>
                     </div>
